@@ -1,0 +1,15 @@
+[package]
+name = "game"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+macroquad = { version = "0.4.16", features = ["audio"] }
+resvg = "0.47"
+
+[profile.release]
+opt-level = "z"     # optimize for size instead of speed
+lto = true           # link-time optimization, strips dead code more aggressively
+codegen-units = 1     # slower compile, smaller/tighter binary
+panic = "abort"       # drops unwinding tables
+strip = true          # strips debug symbols automatically
